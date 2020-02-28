@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
+
   def index
+    @listings = Listing.all
   end
 
   def create
@@ -16,4 +18,5 @@ class ListingsController < ApplicationController
 
   def destroy
   end
+
 end
