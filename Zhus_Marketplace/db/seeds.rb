@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+brands = [
+    "Nike","Adidas","Jordan","Reebok","Vans",
+    "Converse","Under Armour","Puma","New Balance",
+    "Sketchers","Johnston and Murphy","Bostonian",
+    " Fila", "Lebron", "Testoni", "Berluti","Asics",
+    "Tommy Hilfiger"
+]
+
+brands.each do |brand|
+
+    Brand.create(name:brand)
+    puts "#{brand} created"
+
+end
