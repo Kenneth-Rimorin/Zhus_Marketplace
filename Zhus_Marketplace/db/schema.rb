@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_040330) do
+ActiveRecord::Schema.define(version: 2020_02_29_105732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,16 @@ ActiveRecord::Schema.define(version: 2020_02_28_040330) do
 
   create_table "listings", force: :cascade do |t|
     t.string "name"
+    t.bigint "brand_id"
     t.string "color"
     t.integer "size"
     t.integer "price"
+    t.integer "category"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_listings_on_brand_id"
   end
 
+  add_foreign_key "listings", "brands"
 end
