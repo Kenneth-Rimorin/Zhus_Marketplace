@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :update, :destroy]
   before_action :set_brands_and_categories, only: [:new, :edit]
 
 
   
   def index
-    @listings = Listing.all
+    @listing = Listing.all
   end
 
   def show
@@ -22,12 +22,13 @@ class ListingsController < ApplicationController
         set_brands_and_categories
           render "new"
       else
-          redirect_to listings_path
+          redirect_to root_path
       end
 
   end
 
   def edit
+    @listing = Listing.all
   end
 
   def update

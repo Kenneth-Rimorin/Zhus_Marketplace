@@ -1,0 +1,43 @@
+<%= form_with(model: @listing, local: true) do |form| %>
+
+    <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    </div>
+
+    <div>
+    <%= form.label :brand_id %>
+    <%= form.select(:brand_id, @brands.map{|b| [b.name, b.id]}) %>
+    </div>
+
+    <% @categories.each do |option| %>
+        <div>
+            <%= form.radio_button :category, option %>
+            <%= form.label "category_#{option}".to_sym, option %>
+        <div>
+    <% end %>
+
+    <div>
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+    </div>
+
+    <div>
+    <%= form.label :size %>
+    <%= form.text_field :size %>
+    </div>
+
+    <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+    </div>
+
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    </div>
+
+    <div>
+    <%= form.submit %>
+    </div>
+
+<% end %>

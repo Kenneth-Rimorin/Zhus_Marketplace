@@ -89,19 +89,37 @@
     </div>
     <hr>
     <div class="col-12">
-    <p class="lead">awwwww</p>
+    <p class="lead"></p>
     </div>
 </div>
 </div> 
 
 <%#= -------------listingsection%>
-<div class="container-fluid padding">
-<div class="row text-center padding">
-    <div class="col-xs-12 col-sm-6 col-md-4">
 
-    
+<div class="container">
+    <div class="row">
+
+    <% @listings.each do |listing| %>
+        <div class="col-xs-12 col-md-4 col-lg-4 mt-5">
+            <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title"><%= listing.name %></h5>
+                <p class="card-text">AUD: $<%= listing.price %></p>
+                <a href="#" class="btn btn-primary">View</a>
+                <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+
+    <% end %>
+
     </div>
 </div>
+
+
+    </div>
+
 <hr class="my-4">
-</div>
+
 
