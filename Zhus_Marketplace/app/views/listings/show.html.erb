@@ -96,7 +96,9 @@
         <h6>Size: <%= @listing.size %></h6>
         <h6>Description: <%= @listing.description %></h6>
         <h6>Price: AUD $ <%= @listing.price %></h6>
-        <%= link_to "edit", edit_listing_path, class:"btn btn-primary" %>
+        <%= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
+        <%= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
+        data: { confirm: "Are you sure?" } %>
     </div>
     </div>
 </div>
