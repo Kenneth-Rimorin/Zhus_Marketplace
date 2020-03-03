@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   delete "/:id", to: "listings#destroy"
   get "/:id/edit", to: "listings#edit", as: "edit_listing"
 
-  get "*path", to: "pages#not_found"
+  get "/:path", to: "pages#not_found"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -82,11 +82,11 @@
 </div>
 
 <%#= -------------listingsection%>
-
 <div class="container mb-5">
     <div class="row">
         <div class= "col">
             <h1>image here</h1>
+            <%= image_tag @listing.picture if @listing.picture.attached? %>
         </div>
         <div class= "col">
         <h1><%= @listing.name %></h1>
