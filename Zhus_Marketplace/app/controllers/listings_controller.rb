@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_brands_and_categories, only: [:new, :edit]
 
 
@@ -9,6 +9,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listings = Listing.all
   end
 
   def new
@@ -28,7 +29,6 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.all
   end
 
   def update

@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def page_not_found
   end
 
-  def view
+  def more
     @listings = Listing.all
   end
 

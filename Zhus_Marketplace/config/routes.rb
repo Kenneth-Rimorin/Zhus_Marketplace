@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/', to: "pages#index", as: "root"
- 
+  get "/", to: "pages#more"
 
 
   get "/", to: "listings#index", as: "listings"
