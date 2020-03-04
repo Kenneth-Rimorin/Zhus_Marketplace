@@ -51,10 +51,10 @@
     <% @listings.each do |listing| %>
         <div class="col-xs-12 col-md-4 col-lg-4 mt-5">
             <div class="card" style="width: 18rem;">
-            <%= image_tag (listing.picture), class:"card-img-top" if listing.picture.attached?%>
+            <%= image_tag (listing.picture), class:"card-img-top p-3" if listing.picture.attached?%>
                 <div class="card-body">
-                <h5 class="card-title"><%= listing.name %></h5>
-                <p class="card-text">AUD: $<%= listing.price %></p>
+                <h2 class="card-title"><%= listing.name.upcase %></h2>
+                <p class="card-text ">AUD: $<%= listing.price %></p>
                 <%= link_to "more",listing_path(listing.id), class:"btn btn-primary"%>
                 </div>
             </div>

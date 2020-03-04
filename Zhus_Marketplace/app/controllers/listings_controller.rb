@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_brands_and_categories, only: [:new, :edit]
   before_action :authenticate_user!
+  before_action :set_user_listing, only: [:edit, :update, :destroy]
 
 
 
@@ -19,10 +20,10 @@ class ListingsController < ApplicationController
   end
 
   def create
-      @listing = Listing.create(listing_params)
+    @listing = current_user.listings.create(listing_params)
         
       if @listing.errors.any?
-        set_brands_and_categories
+        # set_brands_and_categories
           render "new"
       else
           redirect_to root_path
@@ -46,6 +47,10 @@ class ListingsController < ApplicationController
       redirect_to listings_path
   end
 
+  
+
+  private
+
   def set_listing
     id = params[:id]
     @listing = Listing.find(id)
@@ -54,9 +59,16 @@ class ListingsController < ApplicationController
   def set_brands_and_categories
     @brands = Brand.all
     @categories = Listing.categories.keys
-end
+  end
 
-  private
+  def set_user_listing
+    id = params[:id]
+    @listing = current_user.listings.find_by_id(id)
+
+    if @listing == nil
+        redirect_to listings_path
+    end
+end
 
   def listing_params
       params.require(:listing).permit(:name, :description, :price, :color, :size, :brand_id, :category, :picture)

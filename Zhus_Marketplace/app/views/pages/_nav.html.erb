@@ -37,15 +37,27 @@
         </ul>
 
         <ul class="navbar-nav mr-5">
-            
-            <li class="nav-item">
-            <%= link_to "Sign-in", new_user_session_path, class:"btn btn-primary btn-space" %>
+
+            <% if user_signed_in?%>
             </li>
             <li class="nav-item">
-            <%= link_to "Sign-up", new_user_registration_path, class:"btn btn-outline-secondary " %>
+            <%= link_to "Create Listing", destroy_user_session_path, method: 'delete' , class:"btn btn-primary btn-space"%>
             </li>
+
+            <li class="nav-item">
+            <%= link_to "Logout", destroy_user_session_path, method: 'delete' , class:"btn btn-outline-secondary btn-space"%>
+            <% else %>
+            <li class="nav-item">
+            <%= link_to "Sign-in", new_user_session_path , class:"btn btn-primary btn-space" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Sign-up", new_user_registration_path , class:"btn btn-outline-secondary "%>
+            </li>
+          <% end %>
             <%= image_tag('cart.png', :size =>'30x25')%>
         </ul>
+
+
 
     </div>
 
