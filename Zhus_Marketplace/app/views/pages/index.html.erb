@@ -85,7 +85,7 @@
 <div class="container-fluid padding">
 <div class="row welcome text-center">
     <div class="col-12">
-        <h1 class="display-4"> Home Gallery</h1>
+        <h1 class="display-5 lead"> Home Gallery</h1>
     </div>
     <hr>
     <div class="col-12">
@@ -97,30 +97,59 @@
 <%#= -------------listingsection%>
 
 <div class="container">
-    <div class="row">
-
+    <div class="row text-center">
     <% @listings.each do |listing| %>
         <div class="col-xs-12 col-md-4 col-lg-4 mt-5">
             <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <%= image_tag listing.picture if listing.picture.attached? %>
+            <%= image_tag (listing.picture), class:"card-img-top" if listing.picture.attached?%>
                 <div class="card-body">
                 <h5 class="card-title"><%= listing.name %></h5>
                 <p class="card-text">AUD: $<%= listing.price %></p>
-                <%= link_to "more" , listing_path(listing.id)%>
-
+                <%= link_to "more",listing_path(listing.id), class:"btn btn-primary"%>
                 </div>
             </div>
         </div>
-
     <% end %>
+    </div>
+</div>
+<hr class="my-4">
+
+<%#= -------------background-------------%>
+
+<figure>
+    <div class="fixed-warp">
+        <div id="fixed">
+        </div>
+    </div>
+</figure>
+
+<%#= -------------Featured Categories-------------%>
+
+<div class="container-fluid padding">
+<div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="lead display-4">Featured Gallery</h1>
+        </div>
+        <hr>
+</div>
+</div>
+
+<%#= -------------Featured Categories cards-------------%>
+
+<div class="container padding mt-5 mb-5">
+    <div class="row padding text-center">
+
+        <div class="col-md-4">
+                <%= image_tag 'Category1.jpg', class:"card-img-top",style:"width:250px" %>
+        </div>
+        
+        <div class="col-md-4">
+        <%= image_tag 'Category1.jpg', class:"card-img-top",style:"width:250px" %>
+        </div>
+
+        <div class="col-md-4">
+                <%= image_tag 'Category1.jpg', class:"card-img-top",style:"width:250px" %>
+        </div>
 
     </div>
 </div>
-
-
-    </div>
-
-<hr class="my-4">
-
-

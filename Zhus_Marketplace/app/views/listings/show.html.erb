@@ -83,19 +83,19 @@
 
 <%#= -------------listingsection%>
 <div class="container mb-5">
-    <div class="row">
-        <div class= "col">
-            <h1>image here</h1>
-            <%= image_tag @listing.picture if @listing.picture.attached? %>
+    <div class="row ">
+        <div class= "col text-center border rounded  mr-5 ">
+            <%= image_tag (@listing.picture),size:'400x350' if @listing.picture.attached? %>
+            
         </div>
         <div class= "col">
-        <h1><%= @listing.name %></h1>
-        <h6>Brand: <%= @listing.brand.name %></h6>
-        <h6>Category: <%= @listing.category %></h6>
-        <h6>Color: <%= @listing.color %></h6>
-        <h6>Size: <%= @listing.size %></h6>
-        <h6>Description: <%= @listing.description %></h6>
-        <h6>Price: AUD $ <%= @listing.price %></h6>
+        <h1><%= @listing.name.upcase %></h1>
+        <p class="lead">Brand: <%= @listing.brand.name %></p>
+        <p class="lead">Category: <%= @listing.category %></p>
+        <p class="lead">Color: <%= @listing.color %></p>
+        <p class="lead">Size: <%= @listing.size %></p>
+        <p class="lead">Description: <%= @listing.description %></p>
+        
         <%= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
         <%= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
         data: { confirm: "Are you sure?" } %>
