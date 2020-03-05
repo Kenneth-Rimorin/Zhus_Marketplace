@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   patch "/:id", to: "listings#update"
   delete "/:id", to: "listings#destroy"
   get "/:id/edit", to: "listings#edit", as: "edit_listing"
-  get "listings/manage", to: "listings#manage"
+  get "/manage", to: "listings#manage", as: "manage_listing"
 
 
   get "/:path", to: "pages#not_found"

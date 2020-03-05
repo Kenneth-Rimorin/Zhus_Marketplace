@@ -48,6 +48,7 @@ class ListingsController < ApplicationController
   end
 
   def manage
+    
   end
 
   
