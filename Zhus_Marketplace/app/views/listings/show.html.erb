@@ -45,8 +45,10 @@
         <p class="lead">Size: <%= @listing.size %></p>
         <p class="lead">Description: <%= @listing.description %></p>
         
-        <%= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
-        <%= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
+        <%= link_to "Buy", edit_listing_path, class:"btn btn-primary" %>
+        <%= link_to "ADD TO CART", edit_listing_path, class:"btn btn-primary" %>
+        <%#= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
+        <%#= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
         data: { confirm: "Are you sure?" } %>
     </div>
     </div>
