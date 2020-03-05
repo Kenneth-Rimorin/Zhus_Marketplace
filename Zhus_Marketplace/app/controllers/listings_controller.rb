@@ -47,6 +47,9 @@ class ListingsController < ApplicationController
       redirect_to listings_path
   end
 
+  def manage
+  end
+
   
 
   private

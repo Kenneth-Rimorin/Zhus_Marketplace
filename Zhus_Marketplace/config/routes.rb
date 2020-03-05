@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   patch "/:id", to: "listings#update"
   delete "/:id", to: "listings#destroy"
   get "/:id/edit", to: "listings#edit", as: "edit_listing"
+  get "listings/manage", to: "listings#manage"
+
 
   get "/:path", to: "pages#not_found"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
