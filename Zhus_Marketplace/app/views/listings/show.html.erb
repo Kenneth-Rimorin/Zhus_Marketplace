@@ -44,20 +44,21 @@
         <p class="lead">Color: <%= @listing.color %></p>
         <p class="lead">Size: <%= @listing.size %></p>
         <p class="lead">Description: <%= @listing.description %></p>
-        
 
-
+        <% if user_signed_in?%>
  
-        <% if current_user.id == @listing.user.id%>
-        <%= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
-        <%= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
-        data: { confirm: "Are you sure?" } %>
+            <% if current_user.id == @listing.user.id%>
+                <%= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
+                <%= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
+                data: { confirm: "Are you sure?" } %>
+            <% else %>
+                <%#= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
+                <%#= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
+                data: { confirm: "Are you sure?" } %>
+            <% end %>
         <% else %>
-        <%#= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
-        <%#= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
-        data: { confirm: "Are you sure?" } %>
-        <%= link_to "Buy", edit_listing_path, class:"btn btn-primary" %>
-        <%= link_to "ADD TO CART", edit_listing_path, class:"btn btn-primary" %>
+            <%= link_to "Buy", edit_listing_path, class:"btn btn-primary" %>
+            <%= link_to "ADD TO CART", edit_listing_path, class:"btn btn-primary" %>
         <% end %>
 
     </div>
