@@ -14,9 +14,74 @@
  */
 
  @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+ #map {
+    width: 850px;
+    height: 400px;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins',sans-serif;
+    color: #222;
+}
+
+h4{
+    background-color: black;
+    padding: 1rem;
+}
+
+.navbar{
+    padding: .8rem
+}
+
+.rightnav{
+    position: absolute;
+}
+
+.navbar-nav li{
+    // padding-right: 20px;
+}
+
+.carousel-inner img{
+    width: 100%;
+    height: 100%;
+}
 
 
+.caro{
+ 
+  max-width: 420px;
+  max-height: 660px;
 
+}
+
+.jumbotron{
+    padding: 1rem;
+    border-radius: 0;
+}
+
+.bg{
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+
+}
+
+.gallery {
+    padding-top: 2rem;
+}
+
+
+.social a {
+    font-size: 4.5em;
+    padding: 1rem;
+    
+}
 
 .btn-space {
     margin-right: 10px;
@@ -26,5 +91,89 @@
     border-radius: 80px;
     padding: 30px;
     margin: auto;
+}
+
+.footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 5rem;
+}
+
+
+.foot{
+    background-color: black;
+    padding: 0.5rem;
+}
+.display-6{
+    padding-top: 2rem;
+
+}
+
+
+figure {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    margin: 0!important;
+    padding: 15rem;
+  }
+
+  .fixed-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    clip: rect(0, 140rem, 30rem, 0);
+    
+    
+  }
+
+  #fixed {
+    background-image: url('scroll.jpg');
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    will-change: transform;
+  }
+
+
+  #payment{
+      padding:8rem
+  }
+
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+    
+
+}
+@media (max-width: 576px) {
+
+    .carousel-inner img{
+        width: 100%;
+        height: 150%;
+    }
+
+    #map {
+        width: 400px;
+        height: 400px;
+    }
+
+    #listing{
+        margin: auto;
+    }
+
+    
+
+
 }
 

@@ -22,4 +22,17 @@ brands.each do |brand|
 
 end
 
-Listing.create(name:"Nike React Element", color:"Red/black",size:12, price:100, description:"Not used, in very good condition", brand:Brand.find(1), category:"casual")
+User.create(email:"user1@yehey.com", password: "111111", name:"Kenneth")
+User.create(email:"user2@yehey.com", password: "111111", name:"Longy")
+User.create(email:"user3@yehey.com", password: "111111", name:"Master")
+User.create(email:"user4@yehey.com", password: "111111", name:"Richard")
+User.create(email:"user5@yehey.com", password: "111111", name:"Warrior")
+User.create(email:"user6@yehey.com", password: "111111", name:"Boy")
+
+puts "Users Created"
+
+
+Place.create!([
+{ "name": "Zhus Headquarter", "latitude": "-33.766197","longitude": "150.816757"},
+{ "name": "Zhus Office", "latitude": "-33.837710", "longitude": "151.208800"},
+])

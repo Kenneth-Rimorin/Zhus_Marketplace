@@ -1,11 +1,14 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_brands_and_categories, only: [:new, :edit]
-  before_action :set_user_listing, only: [:edit, :update, :destroy]
+  before_action :set_user_listing, only: [:edit, :update, :destroy, :cart]
   before_action :authenticate_user! 
   skip_before_action :authenticate_user!, :only => [:show]
+  before_action :ransack, only: [:edit, :update, :destroy, :cart, :index, :show, :new, :create]
 
 
+  def cart
+  end
 
   def index
     @listing = Listing.all
@@ -13,6 +16,31 @@ class ListingsController < ApplicationController
 
   def show
     @listings = Listing.all
+
+    if current_user
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      line_items: [{
+          name: @listing.name,
+          description: @listing.description,
+          amount: @listing.price * 100,
+          currency: 'aud',
+          quantity: 1,
+      }],
+      payment_intent_data: {
+          metadata: {
+              user_id: current_user.id,
+              listing_id: @listing.id
+          }
+      },
+      success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
+      cancel_url: "#{root_url}listings"
+  )
+
+  @session_id = session.id
+    end
   end
 
   def new
@@ -54,6 +82,11 @@ class ListingsController < ApplicationController
   
 
   private
+
+  def ransack
+    @q = Listing.ransack(params[:q])
+    @listings = @q.result.includes(brand: [])
+  end
 
   def set_listing
     id = params[:id]

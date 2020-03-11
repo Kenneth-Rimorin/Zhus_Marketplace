@@ -1,20 +1,7 @@
 
 <%= render :partial => "pages/nav" %>
 
-<%#= -------------Slider%>
-<div id="slides" class="carousel slide" data-ride="carousel">
-<div class="carousel-inner">
-<ul class="carousel-indicators">
-    <li data-target="#slides" data-slide-to="0" class="active"></li>
-    <li data-target="#slides" data-slide-to="1" ></li>
-</ul>
-    <div class="carousel-item active">
-    <%= image_tag('background1.jpg')%>
-    </div>
-    <div class="carousel-item">
-    <%= image_tag('background2.jpg')%>
-</div>
-</div>
+<%= render :partial => "shared/carousel" %>
 
 <%#= -------------jumbotron%>
 <div class="container-fluid mb-5">
@@ -37,13 +24,14 @@
             <%= image_tag (@listing.picture),size:'400x350' if @listing.picture.attached? %>
             
         </div>
-        <div class= "col">
+        <div class= "col" id="item">
         <h1><%= @listing.name.upcase %></h1>
         <p class="lead">Brand: <%= @listing.brand.name %></p>
         <p class="lead">Category: <%= @listing.category %></p>
         <p class="lead">Color: <%= @listing.color %></p>
         <p class="lead">Size: <%= @listing.size %></p>
         <p class="lead">Description: <%= @listing.description %></p>
+        <p class="lead">Owner: <%= @listing.user.name%></p>
 
         <% if user_signed_in?%>
  
@@ -55,13 +43,38 @@
                 <%#= link_to "Edit", edit_listing_path, class:"btn btn-primary" %>
                 <%#= link_to "Delete", @listing, class:"btn btn-primary", method: :delete, 
                 data: { confirm: "Are you sure?" } %>
+
+                <button data-stripe="payment">
+                Pay <%= number_to_currency(@listing.price) %>
+              </button>
+              
+              <script src="https://js.stripe.com/v3/"></script>
+              
+              <script>
+                document
+                  .querySelector("[data-stripe='payment']")
+                  .addEventListener("click", () => {
+                    const stripe = Stripe(
+                      "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+                    );
+              
+                    stripe.redirectToCheckout({
+                      sessionId: "<%= @session_id %>"
+                    });
+                  });
+              </script>                
+
             <% end %>
         <% else %>
-            <%= link_to "Buy", edit_listing_path, class:"btn btn-primary" %>
-            <%= link_to "ADD TO CART", edit_listing_path, class:"btn btn-primary" %>
+            <%= link_to "Buy", new_user_session_path, class:"btn btn-primary" %>
+            <%= link_to "ADD TO CART", new_user_session_path, class:"btn btn-primary" %>
         <% end %>
 
     </div>
     </div>
 </div>
+
+<%=render :partial=>'shared/indexlayout'%>
+
+
 

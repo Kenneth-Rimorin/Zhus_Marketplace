@@ -1,3 +1,12 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(-33.83771,151.2088)
+    });
+  </script>
+<% end %>
+
 
 <%= render "nav"%>
 
@@ -10,10 +19,17 @@
     <li data-target="#slides" data-slide-to="1" ></li>
 </ul>
     <div class="carousel-item active">
-    <%= image_tag('background1.jpg')%>
+    <%= image_tag('slider3.jpg')%>
+
+      <div class="carousel-caption">
+     
+      </div>
+
     </div>
     <div class="carousel-item">
-    <%= image_tag('background2.jpg')%>
+    <%= image_tag('slider1.jpg')%>
+    <div class="carousel-caption">
+    </div>
 </div>
 </div>
 
@@ -21,9 +37,9 @@
 
 <div class="container-fluid">
 <div class="row jumbotron">
-    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-    <h1 class="display-4">About Zhus</h1>
-    <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam odio vel ipsum sodales, eget pellentesque neque porttitor. Aliquam purus felis, auctor sed neque vel,
+    <div class="col-12">
+    <h1 class="display-4">Getting Started</h1>
+    <p class="lead"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec mauris arcu. Curabitur ac nisi vitae enim ultricies tincidunt gravida non ligula. Aenean consectetur odio vitae libero egestas facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque elementum elit id elementum sagittis. Donec malesuada lorem et faucibus facilisis.
     </p>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-9 col-xl-4">
@@ -47,82 +63,167 @@
 
 <%#= -------------listingsection%>
 
-<div class="container">
-    <div class="row text-center">
-    <% @listings.each do |listing| %>
-        <div class="col-xs-12 col-md-4 col-lg-4 mt-5 mb-5">
-            <div class="card" style="width: 18rem;">
-            <%= image_tag (listing.picture), class:"card-img-top p-3" if listing.picture.attached?%>
-                <div class="card-body">
-                <h2 class="card-title"><%= listing.name.upcase %></h2>
-                <p class="card-text ">AUD: $<%= listing.price %></p>
-                <%= link_to "more",listing_path(listing.id), class:"btn btn-primary"%>
+<div class="container" id="listing">
+
+      <div class="row text-center">
+        <% @listings.each do |listing| %>
+            <div class="col-xs-12 col-md-4 col-lg-4 mt-5 mb-5 d-flex align-items-stretch p-5" id="colist">
+                <div class="card" style="width: 18rem;">
+                <%= image_tag (listing.picture), class:"card-img-top p-3" if listing.picture.attached?%>
+                    <div class="card-body">
+                    <h2 class="card-title"><%= listing.name.upcase %></h2>
+                    <p class="card-text ">AUD: $<%= listing.price %></p>
+                    <%= link_to "more",listing_path(listing.id), class:"btn btn-primary"%>
+                    </div>
                 </div>
             </div>
-        </div>
-    <% end %>
-    </div>
+        <% end %>
+      </div>
+
+      </div>
+      
+
 </div>
 
 <%#= -------------background-------------%>
 
 <figure>
-    <div class="fixed-warp">
-        <div id="fixed">
-        </div>
-    </div>
+<div class="fixed-wrap mb-5">
+      <div id="fixed">
+      </div>
+</div>
 </figure>
 
 <%#= -------------Featured Categories-------------%>
 
-<div class="container-fluid padding jumbotron">
-<div class="row welcome text-center">
-        <div class="col-12">
+<div class="container-fluid gallery padding">
+    <div class="row welcome text-center">
+        <div class="col-12 mb-4">
             <h1 class="lead display-5">Featured Gallery</h1>
         </div>
         <hr>
+    </div>
+</div>
 
-        <div class="container padding mt-5 mb-5 ">
-        <div class="row row-cols-1 row-cols-md-3">
+<div class="card-deck mb-5 m-auto p-5">
+  <div class="card">
+  <%=image_tag 'c1.jpg',class:"card-img-top"%>
+    <div class="card-body">
+      <h5 class="card-title">Casual</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+  <%=image_tag 'c4.jpg',class:"card-img-top"%>
+    <div class="card-body">
+      <h5 class="card-title">Basketball</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+  <%=image_tag 'c5.jpg',class:"card-img-top"%>
+    <div class="card-body">
+      <h5 class="card-title">Running</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
 
-        <div class="col mb-4">
-          <div class="card">
-          <%=image_tag 'c1.jpg',class:"card-img-top"%>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
+
+
+<%#= -------------Philosphy------------%>
+
+
+<%#= -------------media------------%>
+<div class="col-12 p-5 tex-center jumbotron">
+<div class=row>
+<div class=col>
+<h3>Zhuz Headquarters</h2>
+<p>Address: Level 3/118 Walker St, North Sydney NSW 2060</p>
+<div id="map"></div>
+</div>
+
+<div class=col>
+<h1 class="display-6" id="about">About Zhus</h1>
+<p class="lead-display-5"> Loreeem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec mauris arcu. Curabitur ac nisi vitae enim ultricies tincidunt gravida non ligula. Aenean consectetur odio vitae libero egestas facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque elementum elit id elementum sagittis. Donec malesuada lorem et faucibus facilisis.
+</p>
+
+<p class="lead-display-5"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec mauris arcu. Curabitur ac nisi vitae enim ultricies tincidunt gravida non ligula. Aenean consectetur odio vitae libero egestas facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque elementum elit id elementum sagittis. Donec malesuada lorem et faucibus facilisis.
+</p>
+<a href="#"><button type="button" class="btn btn-outline-primary btn-lg">More</button></a>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class ="container-fluid">
+<div class ="row text-center">
+
+
+
+        <div class="col-12 social">
+        <h2>Follow us</h2>
+        <a href=""><i class="fab fa-facebook"></i></a>
+        <a href=""><i class="fab fa-youtube"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        </div>
+</div>
+</div>
+
+
+
+<%#= -------------footer------------%>
+<div class="container-fluid footer padding mt-5">
+<div class="row text-center">
+
+        <div class="col-md-4">
+        <h4>Legal</h4>
+        <br>
+        <p>Tips & help</p>
+        <p>About Zhus</p>
+        <p>Help</p>
+        <p>Contact Us</p>
+        <p>Zhuz Classifieds</p>
+        <p>StubHub</p>
+        <p>Register</p>
         </div>
 
-        <div class="col mb-4">
-          <div class="card">
-          <%=image_tag 'c4.jpg',class:"card-img-top"%>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col mb-4">
-          <div class="card">
-          <%=image_tag 'c5.jpg',class:"card-img-top"%>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
+        
+        <div class="col-md-4">
+        <h4>Top Categories</h4>
+        <br>
+        <p>Tips & help</p>
+        <p>Casual</p>
+        <p>Basketball</p>
+        <p>Running</p>
+        <p>Formal</p>
+        <p>Skate & Canvas</p>
+        <p>Other</p>
         </div>
 
-</div>
-</div>
+        
+        <div class="col-md-4">
+        <h4>Zhus Favorites</h4>
+        <br>
+        <p>Nike</p>
+        <p>Adidas</p>
+        <p>Converse</p>
+        <p>Jordan</p>
+        <p>Vans</p>
+        <p>New Balance</p>
+        <p>Under Armour</p>
+        </div>
+
+        <div class="col-12 foot">
+        <h5>&copy; Zhus.com</h5>
+        </div>
 
 </div>
 </div>
 
-<%#= -------------Featured Categories cards-------------%>
 
-
-
-<%#= -------------Review-------------%>
