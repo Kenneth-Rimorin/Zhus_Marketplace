@@ -103,11 +103,12 @@ Backend
 * Visual Studio Code
 
 # User Stories
-* As a user, i want to be able to sell my shoes online.
-* As a user, i want to shop shoes online.
-* As a user, i want to check and browse available shoes online.
-* As a user, im want to buy a pre-loved shoes online.
-* As a user, i want to buy cheaper and branded pair of shoes. 
+* As a user of Zhus marketplace, i want to be able to sell my shoes online.
+* As a user of Zhus marketplace, i want to shop shoes online.
+* As a user of Zhus marketplace, i want to check and browse available shoes online.
+* As a user of Zhus marketplace, i want to buy a pre-loved shoes online.
+* As a user of Zhus marketplace, i want to buy cheaper and branded pair of shoes. 
+* As a user of Zhus marketplace, i want to be able to pay online.
 
 # Wireframes / Mockup of Zhus Marketplace
 
@@ -148,11 +149,13 @@ Mobile view Homepage
 
 ## Third party services
 * Devise - Devise is Ruby gem which handles authentication of the user for the application. It provides forms for sign-in, sign-up and updating user 
-information.
+information. Devise was used to generate user for the application.
 
-* Ransack - Ransack is another Ruby gem that is mainly for sorting and searching a specific list or item depending on the parameters defined by the user. 
+* Ransack - Ransack is another Ruby gem that is mainly for sorting and searching a specific list or item depending on the parameters defined by the user. Ransack is being used in the app for searching a specific listing.
 
 * Bootsrap - Bootstrap is a CSS framework which made the application responsive in all media types especially for mobile devices. It is more effecient for front-end web development. The application is equipped with bootstrap so it can be viewed nicely on mobile devices. 
+
+* HTML & CSS - HTML and CSS are used for styling the application.
 
 * Amazon S3 - Amazon AWS S3 is an Amazon service which provides an online storage for all the images that will be uploaded by the user on the application.
 
@@ -163,7 +166,114 @@ Application uses the Google Maps API to locate the application's office location
 
 * Stripe - Stripe is an online payment method that the application uses.
 
-* Heroku - Heroku is a cloud platform that serves web applications. The application is currenytl deployed and manage in Heroku.
+* Heroku - Heroku is a cloud platform that serves web applications. This application is deployed and serves in Heroku.
 
-## 
+## Model Relationships
+
+User Model and Listing Model
+
+![](./Docs/Images/Relatioships/1.png)
+
+* User model has zero or many listings.
+* Listing model belongs to User model.
+
+
+Brand model and Listing Model
+
+![](./Docs/Images/Relatioships/2.png)
+
+* Brand model has only one Listing model.
+* Listing model has only one brand.
+
+User Model and Review Model
+
+![](./Docs/Images/Relatioships/3.png)
+
+* User model has only one Review.
+* Review model belongs to User model.
+
+
+User model, Listing model and Cart model
+
+![](./Docs/Images/Relatioships/4.png)
+
+* User has zero to many listings model and has only one cart model.
+* Listing model belongs to user and has only one cart.
+* Cart model belongs to user model and has zero to many listings model.
+
+Listing model, Question model and Answer model
+
+![](./Docs/Images/Relatioships/5.png)
+
+* Listing has zero to many Question model.
+* Question model belongs to Listing model.
+* Question model has zero to many Answer model.
+* Answer model belongs to Question model.
+
+Database Relation Implementation
+
+* User table has primary key which is generated automatically when a user signs up. This user primary key will be referenced and used across all tables as a foreign key which link up tables.
+
+* Listing table has primary key which is geranated upon creation, Listing table contains the user id as a foreign key for tracking the user who created the listing. 
+
+* Review table contains user id as a reference key to trace which user will put a review on the application.
+
+* Question table and answer table has a foreign key of user id and listing id. Which identifies which user and listing it belongs to.
+
+## Database Schema Design
+
+User Table fields
+* user_id : int
+* email : varchar
+* encrypted_password : varchar
+* reset_password_token : varchar
+* reset_password_sent_at : timestamp
+* remember_created_at : timestamp
+* created_at : timestamp 
+* updated_at : timestamp
+* name : varchar
+* address : varchar
+* mobile : int
+
+Listing table fields
+
+* listing_id : int
+* name : varchar 
+* user_id : int
+* brand_id : int
+* color : varchar
+* size : int
+* price : int
+* category : varchar 
+* description : varchar
+* created_at : timestamp
+* updated_at : timestamp
+
+Brands table
+
+* brand_id : int
+* name : varchar
+* created_at : timestamp
+* updated_at : timestamp
+
+![](./Docs/Images/Relatioships/7.png)
+
+## Task management
+
+Implemented task management skill using Trello
+link : https://trello.com/b/wT3EU1E6/zhus-marketplace
+
+![](./Docs/Images/Screenshots/1.jpg)
+![](./Docs/Images/Screenshots/2.jpg)
+![](./Docs/Images/Screenshots/3.jpg)
+![](./Docs/Images/Screenshots/4.jpg)
+![](./Docs/Images/Screenshots/5.jpg)
+![](./Docs/Images/Screenshots/6.jpg)
+![](./Docs/Images/Screenshots/7.jpg)
+![](./Docs/Images/Screenshots/8.jpg)
+![](./Docs/Images/Screenshots/9.jpg)
+![](./Docs/Images/Screenshots/10.jpg)
+![](./Docs/Images/Screenshots/11.jpg)
+![](./Docs/Images/Screenshots/12.jpg)
+![](./Docs/Images/Screenshots/13.jpg)
 
