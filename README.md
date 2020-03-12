@@ -1,14 +1,13 @@
 # Problems that needs to be solve
 
-At present, there is no similar marketplace that exist specifically for buying and selling of brand new or pre-loved shoes. There is a big community of people who are interested in shoe collection but are struggling to get the desired shoes because of unavailability. 
+At present, there is no online marketplace that exist specifically for buying and selling of brand new or pre-loved shoes. There is a big community of people who are interested in shoe collection but are struggling to get the desired shoes because of unavailability. People who wants to profit and dispose unwanted shoes faster. 
 
 # 
 This will cater to the following: 
 
-* People who are having a hard time disposing their pre-loved shoes can use this application to make their listings.
-* People who are looking for affordable brand new or pre-loved shoes.
-* People who are searching for specific type of shoes which is unavailable at any shoe retailer.
-
+* Because people does not know where to get an inexpensive pre-loved or brand new pair of shoes.
+* Because shoe enthusiast are having hard time looking and waiting for a specific pair which is unavailable at any retail store. 
+* Because people are stressed about how to dispose unwanted shoes and how to gain profit out of it. 
 
 # Links to Zhus Marketplace
 
